@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #101820;
+  --ink-soft: #3a4650;
+  --paper: #f4f7f8;
+  --paper-deep: #e6ecef;
+  --accent: #0f766e;
+  --accent-deep: #0b5a54;
+  --signal: #d97706;
+  --line: rgba(16, 24, 32, 0.12);
+  --white: #ffffff;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-signal: var(--signal);
+  --color-line: var(--line);
+  --color-white: var(--white);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, white);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+}
+
+.paint-grid {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(15, 118, 110, 0.14), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgba(217, 119, 6, 0.12), transparent 28%),
+    linear-gradient(180deg, #f7fafb 0%, #eef3f5 100%);
+}
+
+.section-pad {
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
