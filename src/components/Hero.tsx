@@ -16,8 +16,8 @@ export function Hero() {
         transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=2400&q=80"
-          alt="Painter applying a fresh coat to an exterior wall"
+          src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=2400&q=80"
+          alt="Painter rolling a fresh coat onto an interior wall"
           fill
           preload
           className="object-cover"
