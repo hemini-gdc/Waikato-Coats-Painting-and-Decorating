@@ -18,11 +18,12 @@ const display = Syne({
 
 export const metadata: Metadata = {
   title: {
-    default: "Waikato Coats Painting and Decorating",
-    template: "%s | Waikato Coats",
+    default: "Home - Waikato Coats plastering and painting",
+    template: "%s - Waikato Coats plastering and painting",
   },
   description:
     "Waikato-wide specialists in painting finishes — interior, exterior, plastering, repairs and renovations. Based in Kihikihi. Call 020 4078 7381.",
+  applicationName: "Waikato Coats plastering and painting",
 };
 
 export default function RootLayout({
