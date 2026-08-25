@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { brand } from "@/lib/data";
 
@@ -16,8 +17,8 @@ export function Hero() {
         transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <Image
-          src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=2400&q=80"
-          alt="Painter rolling a fresh coat onto an interior wall"
+          src="/images/banner.jpg"
+          alt="Waikato Coats exterior painting in progress"
           fill
           preload
           className="object-cover"
@@ -25,55 +26,49 @@ export function Hero() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(15,118,110,0.35),transparent_45%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-accent-deep via-accent/45 to-accent/20" />
 
-      <div className="section-pad relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end pb-16 pt-28 md:pb-24">
+      <div className="section-pad relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end pb-16 pt-36 md:pb-24">
         <motion.p
-          className="font-display text-4xl leading-none tracking-tight sm:text-5xl md:text-7xl lg:text-8xl"
+          className="text-sm tracking-[0.2em] text-white/80 uppercase"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Call us: {brand.phoneIntl}
+        </motion.p>
+
+        <motion.h1
+          className="font-display mt-4 max-w-5xl text-4xl leading-[0.95] tracking-tight sm:text-5xl md:text-7xl lg:text-8xl"
           initial={reduce ? false : { opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
         >
-          {brand.name}
-        </motion.p>
-
-        <motion.h1
-          className="mt-6 max-w-2xl text-2xl font-medium tracking-tight text-white/95 sm:text-3xl md:text-4xl"
-          initial={reduce ? false : { opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
-        >
-          Painting that feels finished — not just coated.
+          Waikato-Wide Specialists in all types Painting Finishes
         </motion.h1>
 
         <motion.p
-          className="mt-4 max-w-xl text-base text-white/80 md:text-lg"
+          className="mt-6 max-w-2xl text-base text-white/85 md:text-lg"
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
         >
-          {brand.tagline} Residential, commercial and body corporate work across Auckland.
+          From minor repairs to full home renovations, our team brings the skill,
+          experience, and care needed to achieve outstanding results that last
         </motion.p>
 
         <motion.div
-          className="mt-8 flex flex-wrap items-center gap-3"
+          className="mt-8"
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
         >
-          <a
-            href="#contact"
-            className="bg-accent px-5 py-3 text-sm font-medium text-white transition hover:bg-accent-deep"
+          <Link
+            href="/contact"
+            className="inline-flex bg-accent px-5 py-3 text-sm font-medium tracking-[0.12em] text-white uppercase transition hover:bg-accent-deep"
           >
-            Get a free quote
-          </a>
-          <a
-            href="#work"
-            className="border border-white/40 px-5 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-ink"
-          >
-            See recent work
-          </a>
+            Contact us
+          </Link>
         </motion.div>
       </div>
     </section>

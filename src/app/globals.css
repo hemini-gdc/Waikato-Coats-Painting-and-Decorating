@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #101820;
-  --ink-soft: #3a4650;
-  --paper: #f4f7f8;
-  --paper-deep: #e6ecef;
-  --accent: #0f766e;
-  --accent-deep: #0b5a54;
-  --signal: #d97706;
-  --line: rgba(16, 24, 32, 0.12);
+  --ink: #111111;
+  --ink-soft: #3d3d3d;
+  --paper: #ffffff;
+  --paper-deep: #f3f5f9;
+  --accent: #003399;
+  --accent-deep: #002266;
+  --footer: #0b1736;
+  --signal: #003399;
+  --line: rgba(0, 51, 153, 0.16);
   --white: #ffffff;
 }
 
@@ -19,6 +20,7 @@
   --color-paper-deep: var(--paper-deep);
   --color-accent: var(--accent);
   --color-accent-deep: var(--accent-deep);
+  --color-footer: var(--footer);
   --color-signal: var(--signal);
   --color-line: var(--line);
   --color-white: var(--white);
@@ -38,7 +40,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 35%, white);
+  background: color-mix(in oklab, var(--accent) 28%, white);
   color: var(--ink);
 }
 
@@ -48,9 +50,8 @@ body {
 
 .paint-grid {
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(15, 118, 110, 0.14), transparent 34%),
-    radial-gradient(circle at 88% 8%, rgba(217, 119, 6, 0.12), transparent 28%),
-    linear-gradient(180deg, #f7fafb 0%, #eef3f5 100%);
+    radial-gradient(circle at 12% 18%, rgba(0, 51, 153, 0.1), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f3f5f9 100%);
 }
 
 .section-pad {
@@ -75,4 +76,55 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.preloader-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-squares {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.preloader-squares span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  animation: preloader-square 0.95s ease-in-out infinite;
+}
+
+@keyframes preloader-square {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.25);
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-squares span {
+    animation: none;
+  }
 }

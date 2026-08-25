@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Figtree, Syne } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -14,9 +17,12 @@ const display = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Northline Painting | Demo Website",
+  title: {
+    default: "Waikato Coats Painting and Decorating",
+    template: "%s | Waikato Coats",
+  },
   description:
-    "Modern demo website for a New Zealand painting business — residential, commercial and body corporate services.",
+    "Waikato-wide specialists in painting finishes — interior, exterior, plastering, repairs and renovations. Based in Kihikihi. Call 020 4078 7381.",
 };
 
 export default function RootLayout({
@@ -27,7 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${body.variable} ${display.variable} h-full`}>
       <body className="min-h-full antialiased">
-        <SmoothScroll>{children}</SmoothScroll>
+        <Preloader />
+        <SmoothScroll>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
